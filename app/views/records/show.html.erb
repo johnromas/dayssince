@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @record.count %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @record.goal %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @record.active %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>
