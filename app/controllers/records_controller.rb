@@ -1,8 +1,18 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:show, :edit, :update, :destroy]
+  before_action :set_record, only: [:show, :edit, :update, :destroy, :up_one, :down_one]
 
   # GET /records
   # GET /records.json
+  def up_one
+    @record.up_one
+    redirect_to goals_path
+  end
+
+  def down_one
+    @record.down_one
+    redirect_to goals_path
+  end
+
   def index
     @records = Record.all
   end
@@ -64,7 +74,7 @@ class RecordsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_record
-      @record = Record.find(params[:id])
+      @record = Record.find(params[:record_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

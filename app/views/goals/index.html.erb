@@ -5,6 +5,8 @@
     <tr>
       <th>Title</th>
       <th>User</th>
+      <th>Count</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,9 +18,12 @@
       <tr>
         <td><%= goal.title %></td>
         <td><%= goal.user %></td>
+        <td><%= goal.current_record.count %></td>
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Up One", record_up_one_path(goal), method: :post %> </td>
+        <td><%= link_to "Down One", record_down_one_path(goal), method: :post %> </td>
       </tr>
     <% end %>
   </tbody>

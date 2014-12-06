@@ -10,4 +10,7 @@ class Goal < ActiveRecord::Base
   	self.records.create
   end
 
+  def current_record
+  	self.records.find_by!(active: true)
+  end
 end
