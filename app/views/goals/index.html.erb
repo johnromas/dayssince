@@ -14,19 +14,21 @@
       <% end %>
     </div>
   </div>
-  <% @goals.each do |goal| %>
-  <%= link_to(record_up_one_path(goal.current_record), method: :post, remote: true, class: "clickable-goal") do %>
-    <div class="bs-callout bs-callout-danger goal-button">
-      <div id = "some-row-<%= goal.id %>" class="row">
-        <div class="col-xs-9 goal-title">
-          <h4><%= goal.title %></h4>
-        </div>
-        <div class="col-xs-3">
-          <h4 class="text-center"><%= goal.current_record.streak %> days</h4>
-          <!-- <h4 class="text-center">days</h4> -->
+  <div id="goals-list">
+    <% @goals.each do |goal| %>
+    <%= link_to(record_up_one_path(goal.current_record), method: :post, remote: true, class: "clickable-goal") do %>
+      <div class="bs-callout bs-callout-danger goal-button">
+        <div id = "some-row-<%= goal.id %>" class="row">
+          <div class="col-xs-9 goal-title">
+            <h4><%= goal.title %></h4>
+          </div>
+          <div class="col-xs-3">
+            <h4 class="text-center"><%= goal.current_record.streak %> days</h4>
+            <!-- <h4 class="text-center">days</h4> -->
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-  <% end %>
+    <% end %>
+    <% end %>
+  </div>
 </div>
