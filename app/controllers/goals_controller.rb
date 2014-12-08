@@ -7,6 +7,12 @@ class GoalsController < ApplicationController
     @goals = Goal.all
   end
 
+  def reset
+    @goal = Goal.find(params[:goal_id])
+    @goal.reset
+    redirect_to goals_path
+  end
+
   # GET /goals/1
   # GET /goals/1.json
   def show

@@ -3,6 +3,11 @@ class RecordsController < ApplicationController
 
   # GET /records
   # GET /records.json
+  def reset
+    @record.reset
+    redirect_to goals_path
+  end
+
   def up_one
     @record.up_one
     redirect_to goals_path
@@ -79,6 +84,6 @@ class RecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def record_params
-      params.require(:record).permit(:count, :goal_id, :active)
+      params.require(:record).permit(:goal_id, :active)
     end
 end

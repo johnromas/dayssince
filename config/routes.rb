@@ -6,7 +6,9 @@ Dayssince::Application.routes.draw do
     post "/down-one" => "records#down_one", as: :down_one
   end
 
-  resources :goals
+  resources :goals do
+    post "/reset" => "goals#reset", as: :reset
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

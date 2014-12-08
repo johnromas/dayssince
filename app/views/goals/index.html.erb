@@ -1,34 +1,32 @@
-<h1>Listing goals</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>User</th>
-      <th>Count</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @goals.each do |goal| %>
-      <tr>
-        <td><%= goal.title %></td>
-        <td><%= goal.user %></td>
-        <td><%= goal.current_record.count %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "Up One", record_up_one_path(goal), method: :post %> </td>
-        <td><%= link_to "Down One", record_down_one_path(goal), method: :post %> </td>
-      </tr>
+<div id="user-goals">
+  <div>
+    <%= link_to "#", id: "new_goal_button" do %>
+      <i class="fa fa-plus fa-3x pull-right add-goal"></i>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Goal', new_goal_path %>
+  </div>
+  <div>
+    <h1 class="text-center">Goal [Check-In]</h1> 
+    <h3 class="text-center">Days Since I've...</h3>
+    <div id="new-goal-form">
+      <%= bootstrap_form_for Goal.new, remote: true do |f| %>
+        <%= f.text_field :title, hide_label: true %>
+      <%= f.submit "Add", class: "btn btn-primary center-block" %>
+      <% end %>
+    </div>
+  </div>
+  <% @goals.each do |goal| %>
+  <%= link_to(record_up_one_path(goal.current_record), method: :post, remote: true, class: "clickable-goal") do %>
+    <div class="bs-callout bs-callout-danger goal-button">
+      <div id = "some-row-<%= goal.id %>" class="row">
+        <div class="col-xs-9 goal-title">
+          <h4><%= goal.title %></h4>
+        </div>
+        <div class="col-xs-3">
+          <h4 class="text-center"><%= goal.current_record.streak %> days</h4>
+          <!-- <h4 class="text-center">days</h4> -->
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>

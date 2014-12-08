@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205072654) do
+ActiveRecord::Schema.define(version: 20141207013430) do
 
   create_table "goals", force: true do |t|
     t.string   "title"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20141205072654) do
   add_index "goals", ["user_id"], name: "index_goals_on_user_id"
 
   create_table "records", force: true do |t|
-    t.integer  "count",      default: 1
+    t.integer  "streak",     default: 1
     t.integer  "goal_id"
     t.boolean  "active",     default: true
     t.datetime "created_at"
