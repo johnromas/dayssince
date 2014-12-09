@@ -1,5 +1,5 @@
 Dayssince::Application.routes.draw do
-  root "goals#index"
+  root "welcome#index"
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

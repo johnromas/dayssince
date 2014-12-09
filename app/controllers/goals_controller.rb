@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
+    @goals = current_user.goals
   end
 
   def reset
@@ -30,7 +30,7 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
-    @goal = Goal.new(goal_params)
+    @goal = current_user.goals.build(goal_params)
 
     respond_to do |format|
       if @goal.save
