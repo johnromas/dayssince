@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-      user.photo = user.facebook.get_picture("me")
+      user.photo = user.facebook.get_picture("me", type: "normal")
       # user.photo = facebook.get_photo("me")
       user.save!
     end
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def get_photo
-    self.photo = facebook.get_picture("me")
+    self.photo = facebook.get_picture("me", type: "normal")
     self.save!
   end
 end

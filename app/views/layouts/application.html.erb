@@ -9,17 +9,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-	<%= navbar do %>
-  <div id="user_nav" class="pull-right">
+	<%= navbar position: :static do %>
+    <%= nav class: 'navbar-right' do %>
       <% if current_user %>
-        Welcome <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-        <%= image_tag current_user.photo, class: "img-circle" %>
-
       <% else %>
         <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
     
 <div id="status">
