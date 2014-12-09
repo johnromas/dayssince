@@ -9,8 +9,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
+  <div id="user_nav">
+  <% if current_user %>
+    <%= image_tag current_user.photo %>
+    Signed in as <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
+
 	<%= navbar do %>
   <% end %>
+<div id="status">
+</div>
 	<div class="container">
 		<%= yield %>
 	</div>

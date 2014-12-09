@@ -26,4 +26,7 @@ Dayssince::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  ENV['FACEBOOK_APP_ID'] = '638762872901168'
+  ENV['FACEBOOK_SECRET'] = '112abae7784048459a051f65a3dd8416'
 end

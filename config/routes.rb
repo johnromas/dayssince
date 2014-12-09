@@ -1,6 +1,10 @@
 Dayssince::Application.routes.draw do
   root "goals#index"
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
   resources :records do
     post "/up-one" => "records#up_one", as: :up_one
     post "/down-one" => "records#down_one", as: :down_one
