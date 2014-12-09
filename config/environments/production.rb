@@ -78,6 +78,5 @@ Dayssince::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  ENV['FACEBOOK_APP_ID'] = '638762872901168'
-  ENV['FACEBOOK_SECRET'] = '112abae7784048459a051f65a3dd8416'
+
 end

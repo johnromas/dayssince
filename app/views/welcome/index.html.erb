@@ -1,2 +1,9 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="jumbotron">
+  <h1>Days Since I Haven't</h1>
+  <p>Fun way to get rid of bad habbits!</p>
+  <% if current_user %>
+  	<%= link_to "Sign Out", "/signout", class: 'btn btn-primary' %>
+  <% else %>
+  	<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: 'btn btn-primary' %>
+	<% end %>
+</div>
