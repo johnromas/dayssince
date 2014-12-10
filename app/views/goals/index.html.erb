@@ -19,13 +19,14 @@
   <div id="goals-list">
     <% @goals.each do |goal| %>
     <%= link_to(record_up_one_path(goal.current_record), method: :post, remote: true, class: "clickable-goal") do %>
-      <div class="bs-callout bs-callout-danger goal-button">
+      <div id="goal_button_<%=goal.id %>" class="bs-callout bs-callout-danger">
         <div id = "some-row-<%= goal.id %>" class="row">
           <div class="col-xs-9 goal-title">
             <h4><%= goal.title %></h4>
           </div>
           <div class="col-xs-3">
             <h4 id="goal_record_<%=goal.id %>" class="text-center"><%= goal.current_record.streak %> days</h4>
+            <%= link_to image_tag("https://openclipart.org/image/800px/svg_to_png/89257/kuba_icon_delete.png", size: "35", class: "goal_delete_button pull-right"), goal_path(goal), method: :delete, remote: true %>
             <!-- <h4 class="text-center">days</h4> -->
           </div>
         </div>
@@ -33,4 +34,5 @@
     <% end %>
     <% end %>
   </div>
+  <%= link_to "Edit Goals", "#", id: "edit_goals_button", class: "btn btn-default" %>
 </div>

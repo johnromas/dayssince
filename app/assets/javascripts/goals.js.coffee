@@ -19,3 +19,6 @@ jQuery ->
 	$("#new_goal").submit (event) ->
 		event.preventDefault()
 		$("#new_goal").hide('slow')
+	$(".goal_delete_button").hide()
+	$("#edit_goals_button").click ->
+		$(".goal_delete_button").fadeIn()

@@ -65,6 +65,7 @@ class GoalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to goals_url }
       format.json { head :no_content }
+      format.js { render action: 'destroy' }
     end
   end
 

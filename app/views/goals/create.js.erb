@@ -1,0 +1,2 @@
+html = '<a class="clickable-goal" data-method="post" data-remote="true" href="/records/<%= @goal.current_record.id %>/up-one" rel="nofollow"><div id="goal-button goal_button_<%= @goal.id %>" class="bs-callout bs-callout-danger goal-button"><div id="some-row-<%= @goal.id %>" class="row"><div class="col-xs-9 goal-title"><h4><%= @goal.title %></h4></div><div class="col-xs-3"><h4 class="text-center"><%= @goal.current_record.streak %> days</h4></div></div></div></a>'
+$("#goals-list").append(html)
