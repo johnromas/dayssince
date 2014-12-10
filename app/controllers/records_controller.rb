@@ -9,8 +9,15 @@ class RecordsController < ApplicationController
   end
 
   def up_one
-    @record.up_one
-    redirect_to goals_path
+      respond_to do |format|
+      if @record.up_one
+        format.html { redirect_to goals_path, notice: 'Goal was successfully created.' }
+        format.js { render action: 'up_one', status: :created, location: @record }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @record.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def down_one
