@@ -5,6 +5,7 @@ class GoalsController < ApplicationController
   # GET /goals.json
   def index
     @goals = current_user.goals
+    @streaks = current_user.streaks
   end
 
   def reset

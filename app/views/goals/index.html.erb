@@ -1,38 +1,33 @@
-<div id="user-goals">
-  <div>
-    <%= link_to "#", id: "new_goal_button" do %>
-      <i class="fa fa-plus fa-3x pull-right add-goal"></i>
-    <% end %>
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-0">
+    <%= image_tag current_user.photo, size: "75", class: "img-thumbnail img-circle center-block" %><br>
+    <p class="text-center"><%= current_user.name %></p>
   </div>
-    <%= image_tag current_user.photo, size: "75", class: "img-responsive img-circle pull-left" %>
-  
-  <div>
-    <h1 class="text-center">Goal [Check-In]</h1> 
-    <h3 class="text-center">Days Since I've...</h3>
-    <div id="new-goal-form">
-      <%= bootstrap_form_for Goal.new, remote: true do |f| %>
-        <%= f.text_field :title, hide_label: true %>
-      <%= f.submit "Add", class: "btn btn-primary center-block" %>
+  <div class="col-xs-3">
+    <table id="summary-table" class="table">
+      <tr>
+        <td class="text-center"><%= @goals.count %></td>
+        <td class="text-center">11</td>
+        <td class="text-center"><%= @streaks.count %></td>
+      </tr>
+      <tr>
+        <td class="text-center">Goals</td>
+        <td class="text-center">Followers</td>
+        <td class="text-center">Streaks</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div id="user-goals">
+  <% @goals.each do |goal| %>
+    <div class="list-group">
+      <%= link_to(record_up_one_path(goal.current_record), class: "list-group-item", data: { status: goal.status }, method: :post, remote: true) do %>
+        <h4 class="list-group-item-heading"><%= goal.title %></h4>
+        <i class="goal-checked fa fa-check-circle fa-3x pull-right"></i>
+        <p class="list-group-item-text"><%= goal.current_record.streak %> Days</p>
       <% end %>
     </div>
-  </div>
-  <div id="goals-list">
-    <% @goals.each do |goal| %>
-    <%= link_to(record_up_one_path(goal.current_record), method: :post, remote: true, class: "clickable-goal") do %>
-      <div id="goal_button_<%=goal.id %>" class="bs-callout bs-callout-danger">
-        <div id = "some-row-<%= goal.id %>" class="row">
-          <div class="col-xs-9 goal-title">
-            <h4><%= goal.title %></h4>
-          </div>
-          <div class="col-xs-3">
-            <h4 id="goal_record_<%=goal.id %>" class="text-center"><%= goal.current_record.streak %> days</h4>
-            <%= link_to image_tag("https://openclipart.org/image/800px/svg_to_png/89257/kuba_icon_delete.png", size: "35", class: "goal_delete_button pull-right"), goal_path(goal), method: :delete, remote: true %>
-            <!-- <h4 class="text-center">days</h4> -->
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <% end %>
-  </div>
-  <%= link_to "Edit Goals", "#", id: "edit_goals_button", class: "btn btn-default" %>
+  <% end %>
 </div>
+

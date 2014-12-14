@@ -3,22 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-	defaultcolor = $(".clickable-goal").first("div").css("background-color")
-	$(".clickable-goal").mousedown ->
-		$(this).children("div").css("background-color", "#ebebeb")
-	$(".clickable-goal").mouseup ->
-		$(this).children("div").css("background-color", defaultcolor)
-	$(".clickable-goal").mouseout ->
-		$(this).children("div").css("background-color", defaultcolor)
+	$(".goal-checked").hide()
 
-	$("#new_goal").hide()
+	$('body').find("[data-status='updated']").children(".goal-checked").show()
 
-	$("#new_goal_button").click ->
-		$("#new_goal").toggle('slow')
-
-	$("#new_goal").submit (event) ->
-		event.preventDefault()
-		$("#new_goal").hide('slow')
-	$(".goal_delete_button").hide()
-	$("#edit_goals_button").click ->
-		$(".goal_delete_button").fadeIn()
+	$(".list-group-item").on("ajax:success", (e, data, status, xhr) ->
+    $(this).children(".goal-checked").show()
+  ).on "ajax:error", (e, xhr, status, error) ->
+    $(this).append "<p>Already updated today!</p>"

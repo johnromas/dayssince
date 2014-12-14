@@ -18,4 +18,12 @@ class Goal < ActiveRecord::Base
     current_record.update(active: false)
     create_new_record
   end
+
+  def status
+    if current_record.updated_at.today?
+      "updated"
+    else
+      "not-updated"
+    end
+  end
 end
