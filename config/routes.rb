@@ -7,6 +7,8 @@ Dayssince::Application.routes.draw do
 
   resources :followers
 
+  get 'feed', to: 'feeds#index', as: 'feed'
+
   resources :records do
     post "/up-one" => "records#up_one", as: :up_one
     post "/down-one" => "records#down_one", as: :down_one

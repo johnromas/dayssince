@@ -1,6 +1,8 @@
 class Goal < ActiveRecord::Base
+  include PublicActivity::Common
   belongs_to :user
-  has_many :records
+ 
+  has_many :records, dependent: :destroy
 
   validates_presence_of :title
 

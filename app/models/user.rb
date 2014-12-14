@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  has_many :goals
+  has_many :goals, dependent: :destroy
 
   has_many :followings
   has_many :followers, :through => :followings

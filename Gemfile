@@ -22,6 +22,8 @@ gem 'omniauth-facebook'
 
 gem 'koala'
 
+gem 'public_activity'
+
 gem 'figaro', '1.0'
 
 # Use Uglifier as compressor for JavaScript assets
