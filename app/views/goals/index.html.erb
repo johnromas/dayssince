@@ -25,7 +25,7 @@
       <%= link_to(record_up_one_path(goal.current_record), class: "list-group-item", data: { status: goal.status }, method: :post, remote: true) do %>
         <h4 class="list-group-item-heading"><%= goal.title %></h4>
         <i class="goal-checked fa fa-check-circle fa-3x pull-right"></i>
-        <p class="list-group-item-text"><%= goal.current_record.streak %> Days</p>
+        <p id="record-<%=goal.current_record.id %>" class="list-group-item-text"><%= goal.current_record.streak %> Days</p>
       <% end %>
     </div>
   <% end %>
