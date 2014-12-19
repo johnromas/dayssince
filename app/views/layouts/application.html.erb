@@ -9,19 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-	<%= navbar position: :static do %>
-    <div class="col-xs-2">
+    <div id="wrapper">
+      <% if current_user %>
+        <%= render partial: 'layouts/sidebar'%>
+        <%= render partial: 'layouts/navbar'%>
+      <% end %>
+        <%= yield %>
     </div>
-    <div class="col-xs-8">
-      <h3 class="text-center">Days Since I Haven't</h3>
-    </div>
-    <div class="col-xs-2">
-      <i id="settings-icon" class="fa fa-cog fa-3x"></i>
-    </div>
-  <% end %>
-
-	<div class="container">
-		<%= yield %>
-	</div>
 </body>
 </html>

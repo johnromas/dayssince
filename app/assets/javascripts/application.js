@@ -10,8 +10,23 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui
-//= require bootstrap-sprockets
-//= require_tree .
+//= require jquery-2.1.1.js
+//= require bootstrap.min.js
+//= require jquery.metisMenu.js
+//= require jquery.slimscroll.min.js
+//= require jquery.flot.js
+//= require jquery.flot.tooltip.min.js
+//= require jquery.flot.spline.js
+//= require jquery.flot.resize.js
+//= require jquery.flot.pie.js
+//= require jquery.peity.min.js
+//= require peity-demo.js
+//= require inspinia.js
+//= require pace.min.js
+//= require icheck.min.js
+//= require jquery-ui.min.js
+//= require jquery.gritter.min.js
+//= require jquery.easypiechart.js
+//= require jquery.sparkline.min.js
+//= require sparkline-demo.js
+//= require Chart.min.js

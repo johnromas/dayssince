@@ -1,33 +1,67 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-sm-4">
+    <h2>Goal list</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="active">
+        <strong>Goal List</strong>
+      </li>
+    </ol>
+  </div>
+</div>
 <div class="row">
-  <div class="col-xs-4 col-xs-offset-0">
-    <%= image_tag current_user.photo, size: "75", class: "img-thumbnail img-circle center-block" %><br>
-    <p class="text-center"><%= current_user.name %></p>
-  </div>
-  <div class="col-xs-3">
-    <table id="summary-table" class="table">
-      <tr>
-        <td class="text-center"><%= @goals.count %></td>
-        <td class="text-center">11</td>
-        <td class="text-center"><%= @streaks.count %></td>
-      </tr>
-      <tr>
-        <td class="text-center">Goals</td>
-        <td class="text-center">Followers</td>
-        <td class="text-center">Streaks</td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<div id="user-goals">
-  <% @goals.each do |goal| %>
-    <div class="list-group">
-      <%= link_to(record_up_one_path(goal.current_record), class: "list-group-item", data: { status: goal.status }, method: :post, remote: true) do %>
-        <h4 class="list-group-item-heading"><%= goal.title %></h4>
-        <i class="goal-checked fa fa-check-circle fa-3x pull-right"></i>
-        <p id="record-<%=goal.current_record.id %>" class="list-group-item-text"><%= goal.current_record.streak %> Days</p>
-      <% end %>
+  <div class="col-lg-12">
+    <div class="wrapper wrapper-content animated fadeInUp">
+      <div class="ibox">
+        <div class="ibox-content">
+          <div class="row m-b-sm m-t-sm">
+            <div class="project-list">
+              <table id="summary-table" class="table">
+                <tr>
+                  <td class="text-center"><%= @goals.count %></td>
+                  <td class="text-center">11</td>
+                  <td class="text-center"><%= @streaks.count %></td>
+                </tr>
+                <tr>
+                  <td class="text-center">Goals</td>
+                  <td class="text-center">Followers</td>
+                  <td class="text-center">Streaks</td>
+                </tr>
+              </table>
+              <table class="table table-hover">
+                <tbody>
+                  <% @goals.each do |goal| %>
+                      <tr>
+                        <td class="project-status">
+                          <span class="label label-primary">Active</span>
+                        </td>
+                        <td class="project-title">
+                          <%= goal.title %>
+                          <br/>
+                          <small>Created on: <%= goal.created_at.strftime("%m/%d/%y") %></small>
+                        </td>
+                        <td class="project-completion">
+                          <small><%= goal.current_record.streak %> Days</small>
+                          <div class="progress progress-mini">
+                            <div style="width: 48%;" class="progress-bar"></div>
+                          </div>
+                        </td>
+                        <td class="project-people">
+                        </td>
+                        <td class="project-actions">
+                          <%= link_to(record_up_one_path(goal.current_record), class: "btn btn-white btn-sm", method: :post, remote: true, data: { status: goal.status } ) do %>
+                            <i class="fa fa-check"></i> Done!
+                          <% end %>
+                        </td>
+                      </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-</div>
-
+  </div>
