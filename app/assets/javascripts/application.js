@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery-2.1.1.js
+//= require jquery_ujs
 //= require bootstrap.min.js
 //= require jquery.metisMenu.js
 //= require jquery.slimscroll.min.js
@@ -30,3 +31,4 @@
 //= require jquery.sparkline.min.js
 //= require sparkline-demo.js
 //= require Chart.min.js
+//= require goals.js

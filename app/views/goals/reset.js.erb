@@ -1,0 +1,7 @@
+var button = $("#up_one_<%= @goal.id%>");
+var streak = $("#streak_count_<%= @goal.id %>");
+var new_link = '<%= link_to(record_up_one_path(@goal.current_record), id: "up_one_#{@goal.id}", class: "btn btn-white btn-sm done-button", method: :post, remote: true, data: { status: @goal.status, trigger: "manual", toggle: "popover", placement: "left" } ) do %><i class="fa fa-check"></i> Done!<% end %>'
+streak.html("<%= @goal.current_record.streak %> Days");
+
+$(button).parent().html(new_link)
+// button.removeClass('btn-primary').addClass('btn-white');

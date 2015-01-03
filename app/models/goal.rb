@@ -22,7 +22,7 @@ class Goal < ActiveRecord::Base
   end
 
   def status
-    if current_record.updated_at.today?
+    if current_record.updated_at.today? && current_record.streak != 0
       "updated"
     else
       "not-updated"

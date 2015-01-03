@@ -10,8 +10,16 @@ class GoalsController < ApplicationController
 
   def reset
     @goal = Goal.find(params[:goal_id])
-    @goal.reset
-    redirect_to goals_path
+    respond_to do |format|
+      if @goal.reset
+        # format.html { redirect_to goals_path, notice: 'Goal was successfully created.' }
+        format.js { render action: 'reset', status: :created, location: @goal }
+      else
+        # format.html { render action: 'new' }
+        format.js { render :noting, status: :bad, location: @goal }
+        # format.json { render json: @record.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /goals/1
@@ -52,6 +60,7 @@ class GoalsController < ApplicationController
     respond_to do |format|
       if @goal.update(goal_params)
         format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
+        format.js { render action: 'update', status: :ok, location: @goal }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

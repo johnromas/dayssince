@@ -2,9 +2,12 @@ class Record < ActiveRecord::Base
   belongs_to :goal
 
   def up_one
-  	if self.updated_at < Date.today
+  	if self.goal.status == "not-updated"
 	  	self.streak += 1
 	  	self.save!
+      return true
+    else
+      return false
 	  end
   end
 
