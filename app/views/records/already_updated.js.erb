@@ -1,9 +1,9 @@
-var button = $("#up_one_<%=@record.goal.id%>")
+var button_<%= @record.goal.id %> = $("#up_one_<%=@record.goal.id%>")
 
-button.attr('data-content', 'Already updated today!');
-button.popover('show');
-button.on('shown.bs.popover', function() {
+button_<%= @record.goal.id %>.attr('data-content', 'Already updated today!');
+button_<%= @record.goal.id %>.popover('show');
+button_<%= @record.goal.id %>.on('shown.bs.popover', function() {
     setTimeout(function() {
-       $(button).popover('hide');
+       $(button_<%= @record.goal.id %>).popover('hide');
     }, 3000);
 });

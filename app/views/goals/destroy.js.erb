@@ -1,1 +1,2 @@
 $("#goal_row_<%= @goal.id %>").fadeOut("slow");
+$("#goal_count").html('<%= current_user.goals.count %>');

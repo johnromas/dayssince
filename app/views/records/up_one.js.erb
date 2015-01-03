@@ -1,15 +1,15 @@
-var button = $("#up_one_<%=@record.goal.id%>");
+var button_<%= @record.goal.id %> = $("#up_one_<%=@record.goal.id%>");
 var streak = $("#streak_count_<%= @record.goal.id %>");
 
 var compliments = ["Nice job!", "Keep it up!", "You rock!", "Way to go!"]
 var item = compliments[Math.floor(Math.random()*compliments.length)];
 
-makeButtonGreen(button);
-button.attr('data-content', item);
+makeButtonGreen(button_<%= @record.goal.id %>);
+button_<%= @record.goal.id %>.attr('data-content', item);
 streak.html("<%= @record.streak %> Days");
-button.popover('show');
-button.on('shown.bs.popover', function() {
+button_<%= @record.goal.id %>.popover('show');
+button_<%= @record.goal.id %>.on('shown.bs.popover', function() {
     setTimeout(function() {
-       $(button).popover('hide');
+       $(button_<%= @record.goal.id %>).popover('hide');
     }, 2000);
 });

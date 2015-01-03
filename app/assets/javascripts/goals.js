@@ -15,6 +15,13 @@ $(document).ready(function(){
     $(".modal").modal('hide')
   })
 
+  $(".add_goal").click(function(){
+    $("#goal_title").val("")
+  })
+
+  $('#new_goal_modal').on('shown.bs.modal', function (e) {
+    $("#goal_title")[0].focus();
+  })
 
 })
 
