@@ -30,6 +30,16 @@
             <i class="fa fa-trophy"></i> <span class="nav-label">My Goals</span>
           <% end %>
         </li>
+        <li>
+          <%= link_to(following_path) do %> 
+            <i class="fa fa-users"></i> <span class="nav-label">Following</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to(followers_path) do %> 
+            <i class="fa fa-users"></i> <span class="nav-label">Followers</span>
+          <% end %>
+        </li>
       </ul>
     </div>
   </nav>

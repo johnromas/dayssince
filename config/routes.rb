@@ -1,21 +1,28 @@
 Dayssince::Application.routes.draw do
+
   root "welcome#index"
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  resources :followers
+  # resources :followers
 
   get 'feed', to: 'feeds#index', as: 'feed'
 
   resources :records do
     post "/up-one" => "records#up_one", as: :up_one
-    #post "/down-one" => "records#down_one", as: :down_one
   end
 
   resources :goals do
     post "/reset" => "goals#reset", as: :reset
+  end
+
+  get 'following', to: 'followings#following', as: :following
+  get 'followers', to: 'followings#followers', as: :followers
+  
+  resources :users do
+    post "follow" => "followings#follow", as: :follow
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

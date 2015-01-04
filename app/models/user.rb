@@ -41,4 +41,9 @@ class User < ActiveRecord::Base
   def first_name
     name.split(" ")[0]
   end
+
+  def last_name
+    names = name.split(" ")
+    names[1..-1].join(" ")
+  end
 end

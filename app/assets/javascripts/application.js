@@ -32,3 +32,4 @@
 //= require sparkline-demo.js
 //= require Chart.min.js
 //= require goals.js
+//= require users.js

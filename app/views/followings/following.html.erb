@@ -1,0 +1,38 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-9">
+		<h2>Following</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li class="active">
+				<strong>Following</strong>
+			</li>
+		</ol>
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<% @followings.each do |follower| %>
+		<div class="col-lg-4">
+			<div class="contact-box">
+				<%= link_to follower do %>
+					<div class="col-sm-4 col-xs-3">
+						<div class="text-center">
+            	<%= image_tag follower.photo, class: "img-circle m-t-xs img-responsive" %>  
+							<!-- <div class="m-t-xs font-bold">Graphics designer</div> -->
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<h3><strong><%= follower.name %></strong></h3>
+						<p><%= pluralize(follower.goals.count, "Goal") %> | <%= pluralize(follower.streaks.count, "Streak") %></p>
+					</div>
+					<div class="clearfix"></div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	</div>
+</div>
+
+

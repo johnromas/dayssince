@@ -1,0 +1,47 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-9">
+		<h2>Users</h2>
+		<ol class="breadcrumb">
+			<li>
+				<a href="index.html">Home</a>
+			</li>
+			<li class="active">
+				<strong>Users</strong>
+			</li>
+		</ol>
+	</div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<% @users.each do |user| %>
+		<div class="col-lg-4">
+			<div class="contact-box">
+				<%= link_to user do %>
+					<div class="col-sm-4 col-xs-3">
+						<div class="text-center">
+            	<%= image_tag user.photo, class: "img-circle m-t-xs img-responsive" %>  
+							<!-- <div class="m-t-xs font-bold">Graphics designer</div> -->
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<h3><strong><%= user.name %></strong></h3>
+						<p><%= pluralize(user.goals.count, "Goal") %> | <%= pluralize(user.streaks.count, "Streak") %></p>
+						<!-- <p><%= user.streaks.count %> Streaks</p> -->
+						<!-- <address>
+							<strong>Twitter, Inc.</strong><br>
+							795 Folsom Ave, Suite 600<br>
+							San Francisco, CA 94107<br>
+							<abbr title="Phone">P:</abbr> (123) 456-7890
+						</address> -->
+						<%= link_to user_follow_path(user), class: 'pull-right', style: "color: green;", method: :post, remote: true do %>
+							<i class="fa fa-plus-square-o fa-3x"></i>
+						<% end %>
+					</div>
+					<div class="clearfix"></div>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	</div>
+</div>
+
