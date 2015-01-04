@@ -1,38 +1,19 @@
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-sm-12">
-    <!-- <button class="add_goal btn btn-primary  dim btn-sm-dim pull-right" type="button"><i class="fa fa-plus"></i></button> -->
     <!-- Button trigger modal -->
     <%= link_to "#", class: "add_goal btn btn-primary dim btn-sm-dim pull-right", data: { toggle: 'modal', target: "#new_goal_modal" } do %>
     <i class="fa fa-plus"></i>
     <% end %>
-    <!-- Modal -->
-    <div class="modal fade" id="new_goal_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">New Goal</h4>
-          </div>
-          <div class="modal-body">
-            <%= bootstrap_form_for Goal.new, remote: true do |f| %>
-            <%= f.text_field :title %>
-          </div>
-          <div class="modal-footer">
-            <%= f.submit "Add", class: "btn btn-primary save_goal" %>
-            <% end %>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- New Goal modal -->
+    <%= render 'form' %>
 
-    <h2>Goal list</h2><span> 
+    <h2><%= current_user.first_name %>'s Goals</h2><span> 
     <ol class="breadcrumb">
       <li>
         <a href="index.html">Home</a>
       </li>
       <li class="active">
-        <strong>Goal List</strong>
+        <strong>Goals</strong>
       </li>
     </ol>
   </div>
