@@ -11,3 +11,8 @@
 		</ol>
 	</div>
 </div>
+
+<% @activities.each do |activity| %>
+	<%= activity.trackable.title %>
+	<%= activity.trackable.user.name %>
+	<% end %>

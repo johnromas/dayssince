@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :inverse_followings, :class_name => "Following", :foreign_key => "follower_id"
   has_many :inverse_followers, :through => :inverse_followings, :source => :user
+
+  validates_inclusion_of :time_zone, in: ActiveSupport::TimeZone.zones_map(&:name)
   
 	def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -16,7 +18,8 @@ class User < ActiveRecord::Base
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.photo = user.facebook.get_picture("me", type: "normal")
-      # user.photo = facebook.get_photo("me")
+      offset = auth.extra.raw_info.timezone
+      user.time_zone = ActiveSupport::TimeZone[offset].name
       user.save!
     end
   end
