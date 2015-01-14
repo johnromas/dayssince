@@ -36,6 +36,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'jquery_mobile_rails'
 
+gem 'newrelic_rpm'
+
 gem 'whenever', require: false
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
