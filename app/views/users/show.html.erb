@@ -47,32 +47,43 @@
 			</div>
 		</div>
 		<div class="col-md-8">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>Goals</h5>
-				</div>
-				<div class="ibox-content">
-					<div>
-						<div class="feed-activity-list">
-							<div class="feed-element">
-								<a href="#" class="pull-left">
-									<img alt="image" class="img-circle" src="img/a1.jpg">
-								</a>
-								<div class="media-body ">
-									<small class="pull-right text-navy">1m ago</small>
-									<strong>Sandra Momot</strong> started following <strong>Monica Smith</strong>. <br>
-									<small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-									<div class="actions">
-										<a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
-										<a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> Love</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<button class="btn btn-primary btn-block m"><i class="fa fa-arrow-down"></i> Show More</button>
-					</div>
-				</div>
-			</div>
+			<div class="wrapper wrapper-content animated fadeInUp">
+      <div class="ibox">
+        <div class="ibox-content">
+          <div class="row m-b-sm m-t-sm">
+            <div class="project-list">
+              <table id="summary-table" class="table">
+                <tr>
+                  <td id = "goal_count" class="text-center"><%= @goals.count %></td>
+                  <td class="text-center"><%= current_user.followers.count %></td>
+                  <td class="text-center"><%= @streaks.count %></td>
+                </tr>
+                <tr>
+                  <td class="text-center">Goals</td>
+                  <td class="text-center">Followers</td>
+                  <td class="text-center">Streaks</td>
+                </tr>
+              </table>
+              <table class="table table-hover">
+                <tbody id="goal_rows">
+                  <% @goals.each do |goal| %>
+                  <tr id="goal_row_<%= goal.id %>">
+                    <td id="goal-title-<%=goal.id%>">
+                      <span><%= goal.title %></span>
+                      <br/>
+                      <small>Created on: <%= goal.created_at.strftime("%m/%d/%y") %></small>
+                    </td>
+                    <td class="goal-completion">
+                      <small id="streak_count_<%= goal.id %>"><%= goal.current_record.streak %> Days</small>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 		</div>
 	</div>
 </div>
