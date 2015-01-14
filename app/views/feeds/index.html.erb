@@ -12,7 +12,27 @@
 	</div>
 </div>
 
-<% @activities.each do |activity| %>
-	<%= activity.trackable.title %>
-	<%= activity.trackable.user.name %>
-	<% end %>
+<div class="ibox float-e-margins">
+	<div class="ibox-title">
+		<h5>Activites</h5>
+	</div>
+	<div class="ibox-content">
+		<div>
+			<div class="feed-activity-list">
+			<% @activities.each do |activity| %>
+				<div class="feed-element">
+					<%= link_to user_path(activity.owner) do %>
+            <%= image_tag activity.owner.photo, size: "75", class: "img-circle pull-left" %><br>  
+          <% end %> 
+					<div class="media-body ">
+						<small class="pull-right"><%= time_ago_in_words(activity.created_at) %> ago</small>
+						<%= render_activity activity %> <br>
+					</div>
+				</div>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

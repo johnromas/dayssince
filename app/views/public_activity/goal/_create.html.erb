@@ -1,7 +1,7 @@
 
 <% if activity.trackable %>
-  <p><%= activity.owner.name %> added a new goal:</p>
-  <p><%= link_to activity.trackable.title, activity.trackable %></p>
+	<strong><%= activity.owner.name %></strong> created a new goal: <strong><%= activity.trackable.title %></strong><br>
+
 <% else %>
   which has since been removed
 <% end %>
