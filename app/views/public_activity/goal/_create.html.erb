@@ -1,5 +1,5 @@
 
-<% if activity.trackable && !activity.trackable.private? %>
+<% if activity.trackable %>
 	<strong><%= activity.owner.name %></strong> created a new goal: <strong><%= activity.trackable.title %></strong><br>
 
 <% else %>
