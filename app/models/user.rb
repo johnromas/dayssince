@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   def streaks
     streaks = []
-    goals.each do |goal|
+    goals.public_goals.each do |goal|
       streaks << goal if goal.current_record.streak > 10
     end
     streaks
