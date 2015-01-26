@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @goals = @user.goals
+    @goals = @user.goals.public_goals
     @streaks = @user.streaks
   end
 

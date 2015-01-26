@@ -9,6 +9,7 @@
       <div class="modal-body">
         <%= bootstrap_form_for Goal.new, remote: true do |f| %>
         <%= f.text_field :title %>
+        <%= f.check_box :private %>
       </div>
       <div class="modal-footer">
         <%= f.submit "Add", class: "btn btn-primary save_goal" %>

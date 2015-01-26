@@ -8,6 +8,8 @@ class Goal < ActiveRecord::Base
 
   after_create :create_new_record
 
+  scope :public_goals, -> { where(private: false) }
+
   def create_new_record
   	self.records.create
   end

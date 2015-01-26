@@ -22,7 +22,11 @@ $(document).ready(function(){
   $('#new_goal_modal').on('shown.bs.modal', function (e) {
     $("#goal_title")[0].focus();
   })
-
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-green',
+    radioClass: 'iradio_square-green',
+    increaseArea: '20%'
+  });
 })
 
 var makeButtonGreen = function(button){
